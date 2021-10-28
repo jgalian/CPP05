@@ -4,13 +4,13 @@
 ** ------------------------------- CONSTRUCTOR --------------------------------
 */
 
-Form::Form() :
-	_name("Default_form"),
-	_status(0),
-	_gradeRequiredToSignIt(150),
-	_gradeRequiredToExecuteIt(150)
-{
-}
+// Form::Form() :
+// 	_name("Default_form"),
+// 	_status(0),
+// 	_gradeRequiredToSignIt(150),
+// 	_gradeRequiredToExecuteIt(150)
+// {
+// }
 
 Form::Form( std::string const name, unsigned const int gradeRequiredToSignIt, unsigned const int gradeRequiredToExecuteIt ) :
 	_name(name),

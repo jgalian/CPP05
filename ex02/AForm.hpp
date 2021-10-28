@@ -17,14 +17,13 @@ class AForm
 		const unsigned int	_gradeRequiredToExecuteIt;
 
 		AForm();
+		AForm &			operator = ( AForm const & rhs );
 
 	public:
 
 		AForm( std::string const name, const unsigned int gradeRequiredToSignIt, unsigned const int gradeRequiredToExecuteIt );
 		AForm( AForm const & src );
 		virtual	~AForm();
-
-		AForm &			operator = ( AForm const & rhs );
 
 		void			beSigned( Bureaucrat const & bureaucrat );
 		void			execute( Bureaucrat const & executor ) const;
@@ -53,7 +52,6 @@ class AForm
 			public:
 				virtual const char * what() const throw();
 		};
-
 
 		std::string const	getName( void ) const;
 		bool				getStatus( void ) const;

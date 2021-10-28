@@ -57,7 +57,7 @@ std::ostream &		operator << ( std::ostream & o, Bureaucrat const & i )
 ** --------------------------------- METHODS ----------------------------------
 */
 
-void				Bureaucrat::signForm( AForm & form ) const
+void		Bureaucrat::signForm( AForm & form ) const
 {
 	if (form.getStatus())
 	{
@@ -73,7 +73,7 @@ void				Bureaucrat::signForm( AForm & form ) const
 		throw Bureaucrat::GradeTooLowException();
 }
 
-void				Bureaucrat::executeForm( AForm const & form ) const
+void		Bureaucrat::executeForm( AForm const & form ) const
 {
 	if (form.getStatus() == 0)
 	{
@@ -86,17 +86,17 @@ void				Bureaucrat::executeForm( AForm const & form ) const
 		throw Bureaucrat::GradeTooLowException();
 }
 
-const char *		Bureaucrat::GradeTooHighException::what() const throw()
+const char *	Bureaucrat::GradeTooHighException::what() const throw()
 {
 	return ("GradeTooHighException");
 }
 
-const char *		Bureaucrat::GradeTooLowException::what() const throw()
+const char *	Bureaucrat::GradeTooLowException::what() const throw()
 {
 	return ("GradeTooLowException");
 }
 
-const char *		Bureaucrat::NotUnsignedNumberException::what() const throw()
+const char *	Bureaucrat::NotUnsignedNumberException::what() const throw()
 {
 	return ("NotUnsignedNumberException");
 }
@@ -115,7 +115,7 @@ unsigned int		Bureaucrat::getGrade( void ) const
 	return (this->_grade);
 }
 
-void				Bureaucrat::setGrade( unsigned int const grade )
+void		Bureaucrat::setGrade( unsigned int const grade )
 {
 	if ((int)grade < 0)
 		throw Bureaucrat::NotUnsignedNumberException();
@@ -127,7 +127,7 @@ void				Bureaucrat::setGrade( unsigned int const grade )
 		this->_grade = grade;
 }
 
-void				Bureaucrat::incrementGrade( void )
+void		Bureaucrat::incrementGrade( void )
 {
 	if (this->_grade - 1 < 1)
 		throw Bureaucrat::GradeTooHighException();
@@ -135,7 +135,7 @@ void				Bureaucrat::incrementGrade( void )
 		--this->_grade;
 }
 
-void				Bureaucrat::decrementGrade( void )
+void		Bureaucrat::decrementGrade( void )
 {
 	if (this->_grade + 1 > 150)
 		throw Bureaucrat::GradeTooLowException();

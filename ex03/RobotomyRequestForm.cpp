@@ -11,11 +11,10 @@ RobotomyRequestForm::RobotomyRequestForm( std::string const target ) :
 }
 
 RobotomyRequestForm::RobotomyRequestForm( const RobotomyRequestForm & src ) :
-	AForm("RobotomyRequestForm", 72, 45),
-	_target(src._target)
+	AForm( src ),
+	_target( src._target )
 {
 }
-
 
 /*
 ** -------------------------------- DESTRUCTOR --------------------------------
@@ -25,27 +24,9 @@ RobotomyRequestForm::~RobotomyRequestForm()
 {
 }
 
-
 /*
 ** --------------------------------- OVERLOAD ---------------------------------
 */
-
-RobotomyRequestForm &			RobotomyRequestForm::operator=( RobotomyRequestForm const & rhs )
-{
-	if ( this != &rhs )
-	{
-		if (rhs.getStatus())
-			this->setStatusSigned();
-	}
-	return *this;
-}
-
-// std::ostream &			operator<<( std::ostream & o, RobotomyRequestForm const & i )
-// {
-// 	//o << "Value = " << i.getValue();
-// 	return o;
-// }
-
 
 /*
 ** --------------------------------- METHODS ----------------------------------
@@ -66,6 +47,5 @@ void		RobotomyRequestForm::concreteExecution( void ) const
 /*
 ** --------------------------------- ACCESSOR ---------------------------------
 */
-
 
 /* ************************************************************************** */

@@ -4,17 +4,16 @@
 # include <iostream>
 # include <string>
 #include <unistd.h>
-#include <time.h>
 # include "AForm.hpp"
 
 class RobotomyRequestForm : public AForm
 {
-
 	private:
 
 		std::string const	_target;
 
 		RobotomyRequestForm();
+		RobotomyRequestForm &	operator = ( RobotomyRequestForm const & rhs );
 
 	public:
 
@@ -22,9 +21,7 @@ class RobotomyRequestForm : public AForm
 		RobotomyRequestForm( RobotomyRequestForm const & src );
 		virtual ~RobotomyRequestForm();
 
-		RobotomyRequestForm &	operator = ( RobotomyRequestForm const & rhs );
-
-		void			concreteExecution( void ) const;
+		void	concreteExecution( void ) const;
 
 };
 

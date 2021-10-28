@@ -11,7 +11,7 @@ PresidentialPardonForm::PresidentialPardonForm( std::string const target ) :
 }
 
 PresidentialPardonForm::PresidentialPardonForm( const PresidentialPardonForm & src ) :
-	AForm("PresidentialPardonForm", 25, 5),
+	AForm( src ),
 	_target(src._target)
 {
 }
@@ -28,22 +28,6 @@ PresidentialPardonForm::~PresidentialPardonForm()
 ** --------------------------------- OVERLOAD ---------------------------------
 */
 
-PresidentialPardonForm &		PresidentialPardonForm::operator = ( PresidentialPardonForm const & rhs )
-{
-	if ( this != &rhs )
-	{
-		if (rhs.getStatus())
-			this->setStatusSigned();
-	}
-	return *this;
-}
-
-// std::ostream &			operator<<( std::ostream & o, PresidentialPardonForm const & i )
-// {
-// 	//o << "Value = " << i.getValue();
-// 	return o;
-// }
-
 /*
 ** --------------------------------- METHODS ----------------------------------
 */
@@ -56,6 +40,5 @@ void		PresidentialPardonForm::concreteExecution( void ) const
 /*
 ** --------------------------------- ACCESSOR ---------------------------------
 */
-
 
 /* ************************************************************************** */

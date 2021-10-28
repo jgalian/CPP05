@@ -23,10 +23,10 @@ class Bureaucrat
 		Bureaucrat( Bureaucrat const & src );
 		~Bureaucrat();
 
-		Bureaucrat &		operator = ( Bureaucrat const & rhs );
+		Bureaucrat &	operator = ( Bureaucrat const & rhs );
 
-		void				signForm( AForm & form ) const;
-		void				executeForm( AForm const & form ) const;
+		void			signForm( AForm & form ) const;
+		void			executeForm( AForm const & form ) const;
 
 		class GradeTooHighException : public std::exception
 		{

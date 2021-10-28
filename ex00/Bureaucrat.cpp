@@ -4,9 +4,9 @@
 ** ------------------------------- CONSTRUCTOR --------------------------------
 */
 
-Bureaucrat::Bureaucrat()
-{
-}
+// Bureaucrat::Bureaucrat()
+// {
+// }
 
 Bureaucrat::Bureaucrat(const std::string name, const unsigned int grade) : _name(name)
 {

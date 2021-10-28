@@ -4,14 +4,6 @@
 ** ------------------------------- CONSTRUCTOR --------------------------------
 */
 
-// AForm::AForm() :
-// 	_name("Default_form"),
-// 	_status(0),
-// 	_gradeRequiredToSignIt(150),
-// 	_gradeRequiredToExecuteIt(150)
-// {
-// }
-
 AForm::AForm( std::string const name, unsigned const int gradeRequiredToSignIt, unsigned const int gradeRequiredToExecuteIt ) :
 	_name(name),
 	_status(0),
@@ -45,15 +37,6 @@ AForm::~AForm()
 /*
 ** --------------------------------- OVERLOAD ---------------------------------
 */
-
-AForm &				AForm::operator = ( AForm const & rhs )
-{
-	if ( this != &rhs )
-	{
-		this->_status = rhs.getStatus();
-	}
-	return *this;
-}
 
 std::ostream &		operator << ( std::ostream & o, AForm const & i )
 {
@@ -153,6 +136,5 @@ unsigned int 		AForm::getGradeRequiredToExecuteIt( void ) const
 {
 	return (this->_gradeRequiredToExecuteIt);
 }
-
 
 /* ************************************************************************** */

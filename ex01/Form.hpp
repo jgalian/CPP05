@@ -13,8 +13,8 @@ class Form
 
 		std::string const	_name;
 		bool				_status;
-		const unsigned int	_gradeRequiredToSignIt;
-		const unsigned int	_gradeRequiredToExecuteIt;
+		unsigned int const	_gradeRequiredToSignIt;
+		unsigned int const	_gradeRequiredToExecuteIt;
 
 		Form();
 
@@ -48,9 +48,9 @@ class Form
 
 		std::string const	getName( void ) const;
 		bool				getStatus( void ) const;
-		void				setStatusSigned( void );
 		unsigned int		getGradeRequiredToSignIt( void ) const;
 		unsigned int		getGradeRequiredToExecuteIt( void ) const;
+		void				setStatusSigned( void );
 
 };
 

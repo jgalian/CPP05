@@ -4,14 +4,6 @@
 ** ------------------------------- CONSTRUCTOR --------------------------------
 */
 
-// AForm::AForm() :
-// 	_name("Default_form"),
-// 	_status(0),
-// 	_gradeRequiredToSignIt(150),
-// 	_gradeRequiredToExecuteIt(150)
-// {
-// }
-
 AForm::AForm( std::string const name, unsigned const int gradeRequiredToSignIt, unsigned const int gradeRequiredToExecuteIt ) :
 	_name(name),
 	_status(0),
@@ -76,7 +68,7 @@ std::ostream &		operator << ( std::ostream & o, AForm const & i )
 ** --------------------------------- METHODS ----------------------------------
 */
 
-void			AForm::beSigned( const Bureaucrat & bureaucrat )
+void		AForm::beSigned( const Bureaucrat & bureaucrat )
 {
 	if (this->getStatus())
 	{
@@ -89,7 +81,7 @@ void			AForm::beSigned( const Bureaucrat & bureaucrat )
 		throw AForm::GradeTooLowException();
 }
 
-void				AForm::execute( Bureaucrat const & executor ) const
+void		AForm::execute( Bureaucrat const & executor ) const
 {
 	if (this->getStatus() == 0)
 	{
@@ -105,22 +97,22 @@ void				AForm::execute( Bureaucrat const & executor ) const
 		throw AForm::GradeTooLowException();
 }
 
-const char *		AForm::GradeTooHighException::what() const throw()
+const char *	AForm::GradeTooHighException::what() const throw()
 {
 	return ("GradeTooHighException");
 }
 
-const char *		AForm::GradeTooLowException::what() const throw()
+const char *	AForm::GradeTooLowException::what() const throw()
 {
 	return ("GradeTooLowException");
 }
 
-const char *		AForm::NotUnsignedNumberException::what() const throw()
+const char *	AForm::NotUnsignedNumberException::what() const throw()
 {
 	return ("NotUnsignedNumberException");
 }
 
-const char *		AForm::FileOpeningException::what() const throw()
+const char *	AForm::FileOpeningException::what() const throw()
 {
 	return ("FileOpeningException");
 }
@@ -153,6 +145,5 @@ unsigned int 		AForm::getGradeRequiredToExecuteIt( void ) const
 {
 	return (this->_gradeRequiredToExecuteIt);
 }
-
 
 /* ************************************************************************** */

@@ -12,6 +12,7 @@ class PresidentialPardonForm : public AForm
 		std::string	const	_target;
 
 		PresidentialPardonForm();
+		PresidentialPardonForm &	operator = ( PresidentialPardonForm const & rhs );
 
 	public:
 
@@ -19,10 +20,8 @@ class PresidentialPardonForm : public AForm
 		PresidentialPardonForm( PresidentialPardonForm const & src );
 		virtual ~PresidentialPardonForm();
 
-		PresidentialPardonForm &	operator = ( PresidentialPardonForm const & rhs );
+		void	concreteExecution( void ) const;
 
-		void			concreteExecution( void ) const;
-		
 };
 
 //std::ostream &			operator << ( std::ostream & o, PresidentialPardonForm const & i );

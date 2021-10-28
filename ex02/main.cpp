@@ -102,6 +102,6 @@ int	main()
 	{
 		std::cerr << e.what() << '\n';
 	}
-
+	std::cout << std::endl;
 	return (0);
 }

@@ -3,6 +3,11 @@
 
 int	main()
 {
+	std::cout << std::endl;
+	std::cout << "/////////////  SIGNING FORM OK  ///////////////";
+	std::cout << std::endl;
+	std::cout << std::endl;
+
 	try
 	{
 		Bureaucrat bobby("Bobby", 5);
@@ -18,7 +23,7 @@ int	main()
 	}
 
 	std::cout << std::endl;
-	std::cout << "///////////////////////////////////////";
+	std::cout << "////////////  SIGNING GRADE LOW KO  ////////////";
 	std::cout << std::endl;
 	std::cout << std::endl;
 
@@ -37,7 +42,7 @@ int	main()
 	}
 
 	std::cout << std::endl;
-	std::cout << "///////////////////////////////////////";
+	std::cout << "///////////  INCORRECT GRADE FORM KO  ///////////";
 	std::cout << std::endl;
 	std::cout << std::endl;
 
@@ -50,6 +55,6 @@ int	main()
 	{
 		std::cerr << e.what() << '\n';
 	}
-
+	std::cout << std::endl;
 	return (0);
 }

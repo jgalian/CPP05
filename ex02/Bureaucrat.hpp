@@ -18,7 +18,6 @@ class Bureaucrat
 
 	public:
 
-
 		Bureaucrat( const std::string name, const unsigned int grade );
 		Bureaucrat( Bureaucrat const & src );
 		~Bureaucrat();

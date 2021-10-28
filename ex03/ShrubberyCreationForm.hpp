@@ -10,9 +10,10 @@ class ShrubberyCreationForm : public AForm
 {
 	private:
 
-		std::string		_target;
+		std::string	const	_target;
 
 		ShrubberyCreationForm();
+		ShrubberyCreationForm &		operator = ( ShrubberyCreationForm const & rhs );
 
 	public:
 
@@ -20,12 +21,8 @@ class ShrubberyCreationForm : public AForm
 		ShrubberyCreationForm( ShrubberyCreationForm const & src );
 		virtual ~ShrubberyCreationForm();
 
-		ShrubberyCreationForm &		operator = ( ShrubberyCreationForm const & rhs );
-
-		void			concreteExecution( void ) const;
+		void	concreteExecution( void ) const;
 
 };
-
-//std::ostream &			operator<<( std::ostream & o, ShrubberyCreationForm const & i );
 
 #endif /* ******************************************* SHRUBBERYCREATIONFORM_H */
