@@ -43,7 +43,7 @@ int	main()
 
 	try
 	{
-		Form p607("p607", 160, 101);
+		Form p607("p607", 0, 101);
 		std::cout << p607 << std::endl;
 	}
 	catch(const std::exception& e)

@@ -57,7 +57,7 @@ std::ostream &		operator << ( std::ostream & o, Bureaucrat const & i )
 ** --------------------------------- METHODS ----------------------------------
 */
 
-void				Bureaucrat::signForm( Form & form ) const
+void				Bureaucrat::signForm( AForm & form ) const
 {
 	if (form.getStatus())
 	{
@@ -69,6 +69,19 @@ void				Bureaucrat::signForm( Form & form ) const
 		form.setStatusSigned();
 		std::cout << this->getName() << " signs " << form.getName() << std::endl;
 	}
+	else
+		throw Bureaucrat::GradeTooLowException();
+}
+
+void				Bureaucrat::executeForm( AForm const & form ) const
+{
+	if (form.getStatus() == 0)
+	{
+		std::cout << "Form needs to be signed in order to be executed" << std::endl;
+		return ;
+	}
+	if (this->getGrade() <= form.getGradeRequiredToExecuteIt())
+		std::cout << this->getName() << " executes " << form.getName() << std::endl;
 	else
 		throw Bureaucrat::GradeTooLowException();
 }

@@ -1,32 +1,32 @@
-#include "Form.hpp"
+#include "AForm.hpp"
 
 /*
 ** ------------------------------- CONSTRUCTOR --------------------------------
 */
 
-Form::Form() :
-	_name("Default_form"),
-	_status(0),
-	_gradeRequiredToSignIt(150),
-	_gradeRequiredToExecuteIt(150)
-{
-}
+// AForm::AForm() :
+// 	_name("Default_form"),
+// 	_status(0),
+// 	_gradeRequiredToSignIt(150),
+// 	_gradeRequiredToExecuteIt(150)
+// {
+// }
 
-Form::Form( std::string const name, unsigned const int gradeRequiredToSignIt, unsigned const int gradeRequiredToExecuteIt ) :
+AForm::AForm( std::string const name, unsigned const int gradeRequiredToSignIt, unsigned const int gradeRequiredToExecuteIt ) :
 	_name(name),
 	_status(0),
 	_gradeRequiredToSignIt(gradeRequiredToSignIt),
 	_gradeRequiredToExecuteIt(gradeRequiredToExecuteIt)
 {
 	if ((int)gradeRequiredToSignIt < 0 || (int)gradeRequiredToExecuteIt < 0)
-		throw Form::NotUnsignedNumberException();
+		throw AForm::NotUnsignedNumberException();
 	if (gradeRequiredToSignIt == 0 || gradeRequiredToExecuteIt == 0)
-		throw Form::GradeTooHighException();
+		throw AForm::GradeTooHighException();
 	if (gradeRequiredToSignIt > 150 || gradeRequiredToExecuteIt > 150)
-		throw Form::GradeTooLowException();
+		throw AForm::GradeTooLowException();
 }
 
-Form::Form( const Form & src ) :
+AForm::AForm( const AForm & src ) :
 	_name(src._name),
 	_status(src._status),
 	_gradeRequiredToSignIt(src._gradeRequiredToSignIt),
@@ -38,7 +38,7 @@ Form::Form( const Form & src ) :
 ** -------------------------------- DESTRUCTOR --------------------------------
 */
 
-Form::~Form()
+AForm::~AForm()
 {
 }
 
@@ -46,7 +46,7 @@ Form::~Form()
 ** --------------------------------- OVERLOAD ---------------------------------
 */
 
-Form &				Form::operator = ( Form const & rhs )
+AForm &				AForm::operator = ( AForm const & rhs )
 {
 	if ( this != &rhs )
 	{
@@ -55,7 +55,7 @@ Form &				Form::operator = ( Form const & rhs )
 	return *this;
 }
 
-std::ostream &		operator << ( std::ostream & o, Form const & i )
+std::ostream &		operator << ( std::ostream & o, AForm const & i )
 {
 	std::string status_message;
 
@@ -66,7 +66,7 @@ std::ostream &		operator << ( std::ostream & o, Form const & i )
 	}
 	else
 	{
-		status_message = " is waiting to be signed  by a bureaucrat with grade higher or equal than ";
+		status_message = " is waiting to be signed by a bureaucrat with grade higher or equal than ";
 		o << i.getName() << status_message << i.getGradeRequiredToSignIt();
 	}
 	return o;
@@ -76,7 +76,7 @@ std::ostream &		operator << ( std::ostream & o, Form const & i )
 ** --------------------------------- METHODS ----------------------------------
 */
 
-void			Form::beSigned( const Bureaucrat & bureaucrat )
+void			AForm::beSigned( const Bureaucrat & bureaucrat )
 {
 	if (this->getStatus())
 	{
@@ -86,49 +86,70 @@ void			Form::beSigned( const Bureaucrat & bureaucrat )
 	if (bureaucrat.getGrade() <= this->getGradeRequiredToSignIt())
 		bureaucrat.signForm(*this);
 	else
-		throw Form::GradeTooLowException();
+		throw AForm::GradeTooLowException();
 }
 
-const char *		Form::GradeTooHighException::what() const throw()
+void				AForm::execute( Bureaucrat const & executor ) const
+{
+	if (this->getStatus() == 0)
+	{
+		std::cout << "Form needs to be signed in order to be executed" << std::endl;
+		return ;
+	}
+	if (executor.getGrade() <= this->getGradeRequiredToExecuteIt())
+	{
+		executor.executeForm(*this);
+		concreteExecution();
+	}
+	else
+		throw AForm::GradeTooLowException();
+}
+
+const char *		AForm::GradeTooHighException::what() const throw()
 {
 	return ("GradeTooHighException");
 }
 
-const char *		Form::GradeTooLowException::what() const throw()
+const char *		AForm::GradeTooLowException::what() const throw()
 {
 	return ("GradeTooLowException");
 }
 
-const char *		Form::NotUnsignedNumberException::what() const throw()
+const char *		AForm::NotUnsignedNumberException::what() const throw()
 {
 	return ("NotUnsignedNumberException");
+}
+
+const char *		AForm::FileOpeningException::what() const throw()
+{
+	return ("FileOpeningException");
 }
 
 /*
 ** --------------------------------- ACCESSOR ---------------------------------
 */
 
-const std::string	Form::getName( void ) const
+const std::string	AForm::getName( void ) const
 {
 	return (this->_name);
 }
 
-bool				Form::getStatus( void ) const
+bool				AForm::getStatus( void ) const
 {
 	return (this->_status);
 }
 
-void				Form::setStatusSigned( void )
+void				AForm::setStatusSigned( void )
 {
 	this->_status = 1;
 }
 
-unsigned int		Form::getGradeRequiredToSignIt( void ) const
+unsigned int		AForm::getGradeRequiredToSignIt( void ) const
 {
 	return (this->_gradeRequiredToSignIt);
 }
 
-unsigned int 		Form::getGradeRequiredToExecuteIt( void ) const
+unsigned int 		AForm::getGradeRequiredToExecuteIt( void ) const
 {
 	return (this->_gradeRequiredToExecuteIt);
 }

@@ -1,5 +1,5 @@
-#ifndef FORM_HPP
-# define FORM_HPP
+#ifndef AFORM_HPP
+# define AFORM_HPP
 
 # include <iostream>
 # include <string>
@@ -7,7 +7,7 @@
 
 class Bureaucrat;
 
-class Form
+class AForm
 {
 	private:
 
@@ -16,17 +16,19 @@ class Form
 		const unsigned int	_gradeRequiredToSignIt;
 		const unsigned int	_gradeRequiredToExecuteIt;
 
-		Form();
+		AForm();
 
 	public:
 
-		Form( std::string const name, const unsigned int gradeRequiredToSignIt, unsigned const int gradeRequiredToExecuteIt );
-		Form( Form const & src );
-		~Form();
+		AForm( std::string const name, const unsigned int gradeRequiredToSignIt, unsigned const int gradeRequiredToExecuteIt );
+		AForm( AForm const & src );
+		virtual	~AForm();
 
-		Form &		operator = ( Form const & rhs );
+		AForm &			operator = ( AForm const & rhs );
 
-		void		beSigned( const Bureaucrat & bureaucrat );
+		void			beSigned( Bureaucrat const & bureaucrat );
+		void			execute( Bureaucrat const & executor ) const;
+		virtual void	concreteExecution( void ) const = 0;
 
 		class GradeTooHighException : public std::exception
 		{
@@ -46,6 +48,13 @@ class Form
 				virtual const char * what() const throw();
 		};
 
+		class FileOpeningException
+		{
+			public:
+				virtual const char * what() const throw();
+		};
+
+
 		std::string const	getName( void ) const;
 		bool				getStatus( void ) const;
 		void				setStatusSigned( void );
@@ -54,6 +63,6 @@ class Form
 
 };
 
-std::ostream &			operator << ( std::ostream & o, Form const & i );
+std::ostream &			operator << ( std::ostream & o, AForm const & i );
 
-#endif /* ************************************************************ FORM_H */
+#endif /* ************************************************************ AFORM_H */
